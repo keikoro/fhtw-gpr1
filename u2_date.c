@@ -1,4 +1,10 @@
-/* Write a program that accepts a date in US format mm/dd/yyyy and prints it in the form dd.mm.yyyy on the next line. Leading 0 are required in the output if the input is less than a maximum number of digits. You do not need to check for errors. */
+/* Write a program that accepts a date in US format mm/dd/yyyy and prints it in the form dd.mm.yyyy on the next line. Leading 0 are required in the output if the input is less than a maximum number of digits. You do not need to check for errors.
+
+% u2_date
+5/22/2009
+22.05.2009
+%
+*/
 
 #include <stdio.h>
 #include <stdlib.h>
