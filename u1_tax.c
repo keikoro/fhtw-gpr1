@@ -1,4 +1,10 @@
-/* Write a program that asks the user to enter a euro-and-cents amount, then displays the amount with 20% tax added. */
+/* Write a program that asks the user to enter a euro-and-cents amount, then displays the amount with 20% tax added.
+
+% u1_tax
+Enter an amount: 100.50
+With tax added : 120.60
+%
+*/
 
 #include <stdio.h>
 #include <stdlib.h>
