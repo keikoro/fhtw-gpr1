@@ -19,7 +19,5 @@ int main() {
 	printf("Surface area: %d\n", surface);
 	printf("Volume: %d\n", volume);
 
-/*	printf("The surface area of a cube with a side side of %.2f is %.2f, and its volume is %.2f\n", side, surface, volume);*/
-
 	return 0;
 }
