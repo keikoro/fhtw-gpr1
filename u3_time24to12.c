@@ -1,4 +1,9 @@
-/*	Write a program that asks the user for a 24-hour time, then displays the time in 12-hour form.
+/*	Write a program that asks the user for a 24-hour time, then displays the time in 12-hour form. The 12-hour time should not contain leading zeros. AM or PM must be printed in capital letters only. Your program only has to handle correct 24h time formats as input.
+
+%u3_time24to12
+Enter a 24-hour time: 21:11
+Equivalent 12-hour time: 9:11 PM
+%
 */
 
 #include <stdio.h>
@@ -10,7 +15,7 @@ int main() {
 	int minutes = 0;
 	char *am = "AM";
 	char *pm = "PM";
-	char *abbreviation;
+	char *abbreviation = "";
 
 	printf("Enter a 24-hour time: ");
 	scanf("%d:%d", &hours, &minutes);
@@ -18,10 +23,10 @@ int main() {
 	if (hours == 0) {
 		hours = 12;
 		abbreviation = am;
-	} else if (hours == 12) {
-		abbreviation = pm;
 	} else if (hours < 12) {
 		abbreviation = am;
+	} else if (hours == 12) {
+		abbreviation = pm;
 	} else {
 		hours = hours - 12;
 		abbreviation = pm;
