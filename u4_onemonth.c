@@ -20,5 +20,22 @@ After the month and day of week have been entered, a single new-line character i
 
 int main() {
 
+	int daysinmonth = 0;
+	int startingday = 0;
+	int i = 0;
+
+	printf("Enter number of days in month: ");
+	scanf("%d", &daysinmonth);
+
+	printf("Enter starting day of the week (1=Monday, 7=Sunday): ");
+	scanf("%d", &startingday);
+	printf("\n");
+
+	for(i=1; i<=daysinmonth; i++) {
+		printf("%d ", i);
+	}
+
+	printf("\n");
+
 	return 0;
 }
