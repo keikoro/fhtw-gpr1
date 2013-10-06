@@ -36,8 +36,8 @@ int main() {
 	for(i=1; i<=daysinmonth; i++) {
 		if (weekday > 1) {
 			/* print spaces for "missing" weekdays */
-			while(calendarstart<weekday) {
-				printf("  ");
+			while(calendarstart<weekday-1) {
+				printf("   ");
 				calendarstart++;
 			}
 		}
