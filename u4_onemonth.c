@@ -32,18 +32,15 @@ int main() {
 	printf("\n");
 
 	for(i=1; i<=daysinmonth; i++) {	// loop through whole month
-
-		if (i%7 == 0) {	// whenever i is modulo 7, make a line break
+		if(i<startingday) {	//	print spaces for "missing" weekdays
+			printf("   ");
+		} else {
+			printf("%2d ", i);
+		}
+		if (i%7 == 0) {	//	create a line break after each Sunday (7th day)
 			printf("\n");
 		}
-
-		// for(j=0; j<startingday; k++) {
-
-		// }
-
-		printf("%d ", i);
 	}
-
 	printf("\n");
 
 	return 0;
