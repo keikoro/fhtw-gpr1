@@ -21,23 +21,29 @@ After the month and day of week have been entered, a single new-line character i
 int main() {
 
 	int daysinmonth = 0;
-	int startingday = 0;
+	int weekday = 0;
+	int calendarstart = 0;
 	int i = 0;
 
 	printf("Enter number of days in month: ");
 	scanf("%d", &daysinmonth);
 
 	printf("Enter starting day of the week (1=Monday, 7=Sunday): ");
-	scanf("%d", &startingday);
+	scanf("%d", &weekday);
 	printf("\n");
 
-	for(i=1; i<=daysinmonth; i++) {	// loop through whole month
-		if(i<startingday) {	//	print spaces for "missing" weekdays
-			printf("   ");
-		} else {
-			printf("%2d ", i);
+	/* loop through whole month */
+	for(i=1; i<=daysinmonth; i++) {
+		if (weekday > 1) {
+			/* print spaces for "missing" weekdays */
+			while(calendarstart<weekday) {
+				printf("  ");
+				calendarstart++;
+			}
 		}
-		if (i%7 == 0) {	//	create a line break after each Sunday (7th day)
+		printf("%2d ", i);
+		/* create line break after each Sunday (7th day of week) */
+		if ((i+weekday-1)%7 == 0) {
 			printf("\n");
 		}
 	}
