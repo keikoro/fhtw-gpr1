@@ -31,7 +31,16 @@ int main() {
 	scanf("%d", &startingday);
 	printf("\n");
 
-	for(i=1; i<=daysinmonth; i++) {
+	for(i=1; i<=daysinmonth; i++) {	// loop through whole month
+
+		if (i%7 == 0) {	// whenever i is modulo 7, make a line break
+			printf("\n");
+		}
+
+		// for(j=0; j<startingday; k++) {
+
+		// }
+
 		printf("%d ", i);
 	}
 
