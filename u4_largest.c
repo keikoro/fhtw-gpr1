@@ -11,7 +11,6 @@ The largest number entered was 55.67
 Enter a number: 0
 No number was entered.
 %
-
 */
 
 #include <stdio.h>
