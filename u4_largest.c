@@ -20,33 +20,20 @@ No number was entered.
 int main() {
 
 	double userinput = 0;
-	double thisnumber = 0;
 	double largestnumber = 0;
 
-	printf("Enter a number: ");
-	scanf("%lf", &userinput);
-	thisnumber = userinput;
-	if (largestnumber < thisnumber) {
-		largestnumber = thisnumber;
-	}
+	do {
+		printf("Enter a number: ");
+		scanf("%lf", &userinput);
+		if(largestnumber < userinput) {
+			largestnumber = userinput;
+		}
+	} while(userinput > 0);
 
-	if (thisnumber <= 0) {
-		printf("\nNo number was entered.\n");
+	if(largestnumber > 0) {
+		printf("\nThe largest number entered was %.2lf\n", largestnumber);
 	} else {
-		while (thisnumber > 0) {
-			printf("Enter a number: ");
-			scanf("%lf", &userinput);
-			thisnumber = userinput;
-
-			if (largestnumber < thisnumber) {
-				largestnumber = thisnumber;
-			}
-		}
-
-		if (thisnumber <= 0) {
-			printf("\nThe largest number entered was %.2lf\n", largestnumber);
-		}
-
+		printf("\nNo number was entered.\n");
 	}
 
 	return 0;
