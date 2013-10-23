@@ -16,8 +16,14 @@ NOT VALID
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 int main() {
 
+    char sentence[80] = {'\0'};
+
+    printf("Enter a sentence: ");
+    scanf("%c", sentence);
+    printf("%s\n", sentence);
     return 0;
 }
