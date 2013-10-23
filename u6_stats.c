@@ -32,14 +32,10 @@ int main() {
         scanf("%c", sentence);
     }
     */
-    printf("%c\n", sentence[0]);
-    printf("%c\n", sentence[1]);
-    printf("%c\n", sentence[2]);
-    printf("%c\n", sentence[3]);
-    printf("%c\n", sentence[4]);
-    printf("%c\n", sentence[5]);
 
 
-    printf("%s\n", sentence);
+    printf("%c\n", sentence[0]); // use %c to print an array elements
+    printf("%s\n", sentence); // use %s to print whole array
+
     return 0;
 }
