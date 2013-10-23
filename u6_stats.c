@@ -23,7 +23,23 @@ int main() {
     char sentence[80] = {'\0'};
 
     printf("Enter a sentence: ");
-    scanf("%c", sentence);
+
+    //scanf("%c", sentence);
+    fgets(sentence, 80, stdin);
+
+    /*
+    while(sentence != ' ') {
+        scanf("%c", sentence);
+    }
+    */
+    printf("%c\n", sentence[0]);
+    printf("%c\n", sentence[1]);
+    printf("%c\n", sentence[2]);
+    printf("%c\n", sentence[3]);
+    printf("%c\n", sentence[4]);
+    printf("%c\n", sentence[5]);
+
+
     printf("%s\n", sentence);
     return 0;
 }
