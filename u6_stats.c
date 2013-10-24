@@ -24,8 +24,7 @@ int main() {
     char sentence[80] = {'\0'};
     int countallowed = 0;
     int countchars = 0;
-    int i, j;
-    int valid = 0;
+    int i;
 
     printf("Enter a sentence: ");
 
@@ -34,21 +33,31 @@ int main() {
 
     countallowed = strlen(allowed); // counts all chars except terminating
     countchars = strlen(sentence);
+    printf("%d\n", countchars);
 
     /*  fgets includes newline character (for Enter) if input is less than
         the allowed number of characters (i.e. only if there's space left in
         the array). -> Check for '\n' and replace it with null terminator if it exists, so it doesn't get counted toward character count. */
 
+    // TODO: check for \n in sentence and remove it
+
+    for (i=0;i<80;i++) {
+        if(sentence[i] == '\n') {
+            sentence[i] = '\0';
+            break;
+        }
+    }
+
+    countchars = strlen(sentence);
     printf("%d\n", countchars);
 
-    //if((countchars < 0) OR (countchars > 79)) {
-    if(countchars > 0) {
+    if((countchars == 0) || (countchars > 79)) {
+        printf("NOT VALID\n");
+    } else {
         printf("there is input\n");
         for(i=0;i<countchars;i++) {
             printf("%c\n", sentence[i]);
         }
-    } else {
-        printf("NOT VALID\n");
     }
 
     /* check for characters (GPR course materials, unit4, p10)
