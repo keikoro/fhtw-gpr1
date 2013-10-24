@@ -69,27 +69,5 @@ int main() {
        }
     */
 
-
-    // this does not work as expected:
-    // check if sentence only contains valid characters
-    // for(i=0;i<countchars;i++) {
-    //     for(j=0; j<countallowed; j++) {
-    //         if (sentence[i] == allowed[j]) {
-    //             printf("%c\n", sentence[i]);
-    //             valid = 1;
-    //         }
-    //     }
-
-    //     if(valid == 1){
-
-    //     } else {
-    //         printf("NOT VALID");
-
-    //     }
-    // }
-
-    // printf("%c\n", sentence[0]); // use %c to print an array elements
-    // printf("%s\n", sentence); // use %s to print whole array
-
     return 0;
 }
