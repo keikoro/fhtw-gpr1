@@ -33,8 +33,8 @@ int main() {
     fgets(sentence, 80, stdin);
 
     countallowed = strlen(allowed); // all characters except terminating
-    countchars = strlen(sentence); // fgets counts line break too
-    countchars -= 1; // correct count to only reflect characters
+    countchars = strlen(sentence);
+    countchars -= 1; // line break gets counted with fgets -> subtract
 
     // printf("%d\n", countchars);
 
