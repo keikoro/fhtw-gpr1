@@ -49,18 +49,22 @@ int main() {
     countchars = strlen(sentence);
     //printf("%d\n", countchars);
 
-    if((countchars == 0) || (countchars > 79)) {
-        printf("NOT VALID\n");
-    } else {
+    if((countchars > 0) && (countchars <= 79)) {    // expected input
         for(i=0;i<countchars;i++) {
-            if(sentence[i] == '.') {   // stop loop on . (full stop)
+            if(sentence[i] == '.') {   // stop loop on .
                 break;
             } else if (sentence[i] == ' ') {   // new word
                 printf("a new word!\n");
             } else {
+
                 printf("%c\n", sentence[i]);
+
+                // TODO check if no word present => print nothing
             }
         }
+    } else if (countchars == 0) {   // no input
+    } else if (countchars > 79) {   // more chars than allowed
+        printf("NOT VALID\n");
     }
 
     /* check for characters (GPR course materials, unit4, p10)
