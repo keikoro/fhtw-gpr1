@@ -21,7 +21,7 @@ NOT VALID
 int main() {
 
     char sentence[80] = {'\0'};
-    char wordlengths[1][10]; // 11 different word lengths max. in 79 chars
+    char wordlengths[1][10]; // max. 11 different word lengths in 79 chars
     int countallowed = 0;
     int countchars = 0;
     int i=0, j=0, k=0;
