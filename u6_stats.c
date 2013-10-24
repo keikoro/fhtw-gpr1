@@ -22,7 +22,6 @@ int main() {
 
     char sentence[80] = {'\0'};
     char wordlengths[1][10]; // max. 11 different word lengths in 79 chars
-    int countallowed = 0;
     int countchars = 0;
     int i=0, j=0, k=0;
 
@@ -31,7 +30,6 @@ int main() {
     // fgets reads full sentences from standard input (including spaces)
     fgets(sentence, 80, stdin);
 
-    countallowed = strlen(allowed); // counts all chars except terminating
     //countchars = strlen(sentence);
     //printf("%d\n", countchars);
 
