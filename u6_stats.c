@@ -34,7 +34,6 @@ int main() {
 
     countallowed = strlen(allowed); // counts all chars except terminating
     countchars = strlen(sentence);
-    countchars -= 1; // newline gets counted with fgets -> subtract
 
     /*  fgets includes newline character (for Enter) if input is less than
         the allowed number of characters (i.e. only if there's space left in
