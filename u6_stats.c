@@ -32,8 +32,8 @@ int main() {
     fgets(sentence, 80, stdin);
 
     countallowed = strlen(allowed); // counts all chars except terminating
-    countchars = strlen(sentence);
-    printf("%d\n", countchars);
+    //countchars = strlen(sentence);
+    //printf("%d\n", countchars);
 
     /*  fgets includes newline character (for Enter) if input is less than
         the allowed number of characters (i.e. only if there's space left in
@@ -49,7 +49,7 @@ int main() {
     }
 
     countchars = strlen(sentence);
-    printf("%d\n", countchars);
+    //printf("%d\n", countchars);
 
     if((countchars == 0) || (countchars > 79)) {
         printf("NOT VALID\n");
