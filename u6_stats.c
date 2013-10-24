@@ -23,7 +23,7 @@ int main() {
     char allowed[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVXYZ. ";
     char sentence[80] = {'\0'};
     int countallowed = 0;
-    int countletters = 0;
+    int countchars = 0;
     int i, j;
     int valid = 0;
 
@@ -33,13 +33,15 @@ int main() {
     fgets(sentence, 80, stdin);
 
     countallowed = strlen(allowed); // all characters except terminating
-    countletters = strlen(sentence); // fgets counts line break too!!
+    countchars = strlen(sentence); // fgets counts line break too
+    countchars -= 1; // correct count to only reflect characters
 
-    printf("%d\n", countletters);
+    // printf("%d\n", countchars);
 
-
-    if(countletters > 1) {
+    if(countchars > 0) {
         printf("there is input\n");
+    } else {
+        printf("NOT VALID\n");
     }
 
     /* Info aus Unit 4, Seite 10
@@ -51,7 +53,7 @@ int main() {
 
     // this does not work as expected:
     // check if sentence only contains valid characters
-    // for(i=0;i<countletters;i++) {
+    // for(i=0;i<countchars;i++) {
     //     for(j=0; j<countallowed; j++) {
     //         if (sentence[i] == allowed[j]) {
     //             printf("%c\n", sentence[i]);
