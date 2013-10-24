@@ -22,9 +22,10 @@ int main() {
 
     char allowed[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVXYZ. ";
     char sentence[80] = {'\0'};
+    char wordlengths[1][10]; // 11 different word lengths max. in 79 chars
     int countallowed = 0;
     int countchars = 0;
-    int i;
+    int i=0, j=0, k=0;
 
     printf("Enter a sentence: ");
 
@@ -54,13 +55,27 @@ int main() {
             if(sentence[i] == '.') {   // stop loop on .
                 break;
             } else if (sentence[i] == ' ') {   // new word
-                printf("a new word!\n");
+                j = 0;
             } else {
-
-                printf("%c\n", sentence[i]);
-
-                // TODO check if no word present => print nothing
+                for(char ch='A'; ch<='Z'; ch++) {
+                    if (sentence[i] == ch) {
+                        j++;
+                    }
+                }
+                for(char ch='a'; ch<='z'; ch++) {
+                    if (sentence[i] == ch) {
+                        j++;
+                    }
+                }
+                if (j == 0) {   // sentence[i] is not a valid letter
+                    printf("NOT VALID\n");
+                    break;
+                } else {
+                    // printf("j is %d\n", j);
+                }
             }
+            printf("and now it's %d\n", j);
+            // TODO check if no word present (only blanks) => print nothing
         }
     } else if (countchars == 0) {   // no input
     } else if (countchars > 79) {   // more chars than allowed
