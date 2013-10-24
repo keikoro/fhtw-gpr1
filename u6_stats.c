@@ -29,21 +29,15 @@ int main() {
 
     // fgets reads full sentences from standard input (including spaces)
     fgets(sentence, 80, stdin);
-
-    //countchars = strlen(sentence);
-    //printf("%d\n", countchars);
-
     /*  fgets includes newline character (for Enter) if input is less than
         the allowed number of characters (i.e. only if there's space left in
-        the array). -> Check for '\n' and replace it with null terminator if it exists, so it doesn't get counted toward character count. */
-
+        the array). -> Check for '\n' and replace it with null terminator if it exists so it doesn't get counted toward character count. */
     for (i=0;i<80;i++) {
         if(sentence[i] == '\n') {
             sentence[i] = '\0';
             break;
         }
     }
-
     countchars = strlen(sentence);
     //printf("%d\n", countchars);
 
