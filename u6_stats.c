@@ -29,22 +29,30 @@ int main() {
 
     printf("Enter a sentence: ");
 
-    // read full sentence (with spaces)
+    // fgets reads full sentences from standard input (including spaces)
     fgets(sentence, 80, stdin);
 
-    countallowed = strlen(allowed); // all characters except terminating
+    countallowed = strlen(allowed); // counts all chars except terminating
     countchars = strlen(sentence);
-    countchars -= 1; // line break gets counted with fgets -> subtract
+    countchars -= 1; // newline gets counted with fgets -> subtract
 
-    // printf("%d\n", countchars);
+    /*  fgets includes newline character (for Enter) if input is less than
+        the allowed number of characters (i.e. only if there's space left in
+        the array). -> Check for '\n' and replace it with null terminator if it exists, so it doesn't get counted toward character count. */
 
+    printf("%d\n", countchars);
+
+    //if((countchars < 0) OR (countchars > 79)) {
     if(countchars > 0) {
         printf("there is input\n");
+        for(i=0;i<countchars;i++) {
+            printf("%c\n", sentence[i]);
+        }
     } else {
         printf("NOT VALID\n");
     }
 
-    /* Info aus Unit 4, Seite 10
+    /* check for characters (GPR course materials, unit4, p10)
     for(char ch='A'; ch<='Z'; ch++) {
             printf("%c, ", ch);
        }
