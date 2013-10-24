@@ -22,26 +22,49 @@ int main() {
 
     char allowed[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVXYZ. ";
     char sentence[80] = {'\0'};
+    int countallowed = 0;
     int countletters = 0;
-    int i;
+    int i, j;
+    int valid = 0;
 
     printf("Enter a sentence: ");
 
     // read full sentence (with spaces)
     fgets(sentence, 80, stdin);
 
-    countletters = strlen(sentence);
-    countletters -= 1; // subtract one for final symbol \0
+    countallowed = strlen(allowed); // all characters except terminating
+    countletters = strlen(sentence); // all characters except terminating
+    printf("%d\n", countletters);
 
-    // check if sentence only contains valid characters
-    for(i=0;i<countletters;i++) {
-        if(strpbrk(allowed, sentence+i)) {
-        //if(sentence[i] != ' ') {
-            printf("%c\n", sentence[i]);
-        } else {
-            printf("NOT VALID\n");
-        }
+
+    if(countletters > 0) {
+        printf("there is input\n");
     }
+
+    /* Info aus Unit 4, Seite 10
+    for(char ch='A'; ch<='Z'; ch++) {
+            printf("%c, ", ch);
+       }
+    */
+
+
+    // this does not work as expected:
+    // check if sentence only contains valid characters
+    // for(i=0;i<countletters;i++) {
+    //     for(j=0; j<countallowed; j++) {
+    //         if (sentence[i] == allowed[j]) {
+    //             printf("%c\n", sentence[i]);
+    //             valid = 1;
+    //         }
+    //     }
+
+    //     if(valid == 1){
+
+    //     } else {
+    //         printf("NOT VALID");
+
+    //     }
+    // }
 
     // printf("%c\n", sentence[0]); // use %c to print an array elements
     // printf("%s\n", sentence); // use %s to print whole array
