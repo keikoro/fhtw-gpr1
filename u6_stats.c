@@ -33,11 +33,12 @@ int main() {
     fgets(sentence, 80, stdin);
 
     countallowed = strlen(allowed); // all characters except terminating
-    countletters = strlen(sentence); // all characters except terminating
+    countletters = strlen(sentence); // fgets counts line break too!!
+
     printf("%d\n", countletters);
 
 
-    if(countletters > 0) {
+    if(countletters > 1) {
         printf("there is input\n");
     }
 
