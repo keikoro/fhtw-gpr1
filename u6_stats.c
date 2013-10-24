@@ -39,8 +39,6 @@ int main() {
         the allowed number of characters (i.e. only if there's space left in
         the array). -> Check for '\n' and replace it with null terminator if it exists, so it doesn't get counted toward character count. */
 
-    // TODO: check for \n in sentence and remove it
-
     for (i=0;i<80;i++) {
         if(sentence[i] == '\n') {
             sentence[i] = '\0';
@@ -54,9 +52,14 @@ int main() {
     if((countchars == 0) || (countchars > 79)) {
         printf("NOT VALID\n");
     } else {
-        printf("there is input\n");
         for(i=0;i<countchars;i++) {
-            printf("%c\n", sentence[i]);
+            if(sentence[i] == '.') {   // stop loop on . (full stop)
+                break;
+            } else if (sentence[i] == ' ') {   // new word
+                printf("a new word!\n");
+            } else {
+                printf("%c\n", sentence[i]);
+            }
         }
     }
 
