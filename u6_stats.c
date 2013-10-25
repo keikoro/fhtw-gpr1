@@ -21,9 +21,9 @@ NOT VALID
 int main() {
 
     char sentence[80] = {'\0'};
-    char wordlengths[1][10]; // max. 11 different word lengths in 79 chars
+    //char wordlengths[1][10]; // max. 11 different word lengths in 79 chars
     int countchars = 0;
-    int i=0, j=0, k=0;
+    int i=0, j=0;
 
     printf("Enter a sentence: ");
 
@@ -45,7 +45,11 @@ int main() {
         for(i=0;i<countchars;i++) {
             if(sentence[i] == '.') {   // stop loop on .
                 break;
-            } else if (sentence[i] == ' ') {   // new word
+            } else if (sentence[i] == ' ') {
+                if (j > 0) {    // space was preceded by a word
+                    printf("j is %d\n", j);
+                    // fill the array
+                }
                 j = 0;
             } else {
                 for(char ch='A'; ch<='Z'; ch++) {
@@ -61,12 +65,13 @@ int main() {
                 if (j == 0) {   // sentence[i] is not a valid letter
                     printf("NOT VALID\n");
                     break;
-                } else {
-                    // printf("j is %d\n", j);
                 }
             }
-            printf("and now it's %d\n", j);
             // TODO check if no word present (only blanks) => print nothing
+        }
+        if (j > 0) {    // space was preceded by a word
+            printf("j is %d\n", j);
+            // fill the array
         }
     } else if (countchars == 0) {   // no input
     } else if (countchars > 79) {   // more chars than allowed
