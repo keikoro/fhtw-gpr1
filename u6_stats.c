@@ -27,7 +27,7 @@ int main() {
 
     printf("Enter a sentence: ");
 
-    // fgets reads full sentences from standard input (including spaces)
+    // fgets reads full sentences from standard input
     fgets(sentence, 80, stdin);
     /*  fgets includes newline character (for Enter) if input is less than
         the allowed number of characters (i.e. only if there's space left in
@@ -39,7 +39,7 @@ int main() {
         }
     }
     countchars = strlen(sentence);
-    //printf("%d\n", countchars);
+    //printf("%d\n", countchars); // TODO remove later on
 
     if((countchars > 0) && (countchars <= 79)) {    // expected input
         for(i=0;i<countchars;i++) {
@@ -52,6 +52,7 @@ int main() {
                 }
                 j = 0;
             } else {
+                // check for letters A-Z (GPR course materials, unit4, p10)
                 for(char ch='A'; ch<='Z'; ch++) {
                     if (sentence[i] == ch) {
                         j++;
@@ -67,22 +68,21 @@ int main() {
                     break;
                 }
             }
-            // TODO check if no word present (only blanks) => print nothing
         }
+        // TODO check if no word present (only blanks) => print nothing
+
         if (j > 0) {    // word length of very last word
             printf("word length of %d\n", j);
             // check + fill the array
         }
-    } else if (countchars == 0) {   // no input
-    } else if (countchars > 79) {   // more chars than allowed
+        /*  TODO loop over multi array - sort from word with lowest no.
+            of letters to word with highest no. of letters
+
+            output nothing if array is empty    */
+
+    } else if (countchars == 0) {   // no input at all
+    } else if (countchars > 79) {   // more characters than allowed
         printf("NOT VALID\n");
     }
-
-    /* check for characters (GPR course materials, unit4, p10)
-    for(char ch='A'; ch<='Z'; ch++) {
-            printf("%c, ", ch);
-       }
-    */
-
     return 0;
 }
