@@ -46,9 +46,9 @@ int main() {
             if(sentence[i] == '.') {   // stop loop on .
                 break;
             } else if (sentence[i] == ' ') {
-                if (j > 0) {    // space was preceded by a word
-                    printf("j is %d\n", j);
-                    // fill the array
+                if (j > 0) {    // length of word preceding this space
+                    printf("word length of %d\n", j);
+                    // check + fill the array
                 }
                 j = 0;
             } else {
@@ -69,9 +69,9 @@ int main() {
             }
             // TODO check if no word present (only blanks) => print nothing
         }
-        if (j > 0) {    // space was preceded by a word
-            printf("j is %d\n", j);
-            // fill the array
+        if (j > 0) {    // word length of very last word
+            printf("word length of %d\n", j);
+            // check + fill the array
         }
     } else if (countchars == 0) {   // no input
     } else if (countchars > 79) {   // more chars than allowed
