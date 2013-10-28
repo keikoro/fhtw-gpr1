@@ -48,14 +48,14 @@ int main() {
     if(countchars > 0 && countchars <= 80) {
         // go through all characters of userinput
         for(i=0;i<countchars;i++) {
-            // check if userinput[i] is a lowercase character
+            // check if userinput[i] is a lowercase character a-z
             for(char ch='a';ch<='z';ch++) {
                 if(userinput[i] == ch) {
                     thislength++;
                     validletter = 1;
                 }
             }
-            // userinput[i] isn't lowercase; check if it's an uppercase char
+            // if userinput[i] isn't lowercase, check if it's uppercase A-Z
             if (validletter != 1) {
                 for(char ch='A';ch<='Z';ch++) {
                     if(userinput[i] == ch) {
@@ -64,7 +64,8 @@ int main() {
                     }
                 }
             }
-            if(validletter != 1) {  // check for spaces and '.'
+            // userinput[i] is no character at all; check for spaces and '.'
+            if(validletter != 1) {
                 if(userinput[i] == ' ') {
                     if (thislength > 0) {
                         printf("Length %d: valid %d\n", thislength, validletter); // TODO remove later on
@@ -77,7 +78,7 @@ int main() {
                         thislength = 0;
                     }
                     break;
-                } else {    // userinput[i] is no valid character
+                } else {    // userinput[i] is no valid character -> exit
                     printf("NOT VALID\n");
                     exit(0);
                 }
