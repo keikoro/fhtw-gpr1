@@ -24,7 +24,7 @@ int main() {
     /*  Allow up to 82 chars so "NOT VALID" can be triggered on inputs with more than 81 chars (= 80 allowed characters + 1 null terminator).    */
     int maxchars = 82;
     char sentence[82] = {'\0'};
-    int wordlengths[2][11] = {}; // max. 11 diff. word lengths in 79 chars
+    int wordlengths[2][11] = {}; // max. 11 diff. word lengths in 80 chars
     int countchars = 0;
     int thislength = 0;
     int validletter = 0;
