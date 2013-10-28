@@ -26,7 +26,8 @@ int main() {
     int countchars = 0;
     int newlength = 0;
     int valid = 1;
-    int i=0, j=0, k=0;
+    int i=0, j=0, k=0, l = 0;
+    int temp0 = 0, temp1 = 0;
 
     printf("Enter a sentence: \n");
 
@@ -105,6 +106,19 @@ int main() {
 
         // only output word lengths in array if ALL input was valid
         if (valid == 1) {
+
+            // sort by word length ascending
+            for(k=1;k<11;k++) {
+                if(wordlengths[0][k] < wordlengths[0][k-1]) {
+                    temp0 = wordlengths[0][k-1];
+                    temp1 = wordlengths[1][k-1];
+                    wordlengths[0][k-1] = wordlengths[0][k];
+                    wordlengths[1][k-1] = wordlengths[1][k];
+                    wordlengths[0][k] = temp0;
+                    wordlengths[1][k] = temp1;
+                }
+            }
+
             for(k=0;k<11;k++) {
                 if (wordlengths[0][k] != 0) {   // ignore empty columns
                     printf("Length %d: %d\n", wordlengths[0][k], wordlengths[1][k]);
