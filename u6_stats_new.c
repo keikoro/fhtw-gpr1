@@ -34,7 +34,7 @@ int main() {
     printf("Enter a userinput: \n");
     /*  fgets reads full userinputs from standard input including spaces, special chars and - if input is less than the allowed no. of character (= if there's space left in the array) - also new line characters (Enter key).  */
     fgets(userinput, maxchars, stdin);
-    /*  As newline characters are also counted with strlen(), a potential newline character needs to be replaced with the null terminator.  */
+    /*  As newline characters are also counted with strlen(), a potential '\n' character needs to be replaced with the null terminator.  */
     for (i=0;i<maxchars;i++) {
         if(userinput[i] == '\n') {
             userinput[i] = '\0';
