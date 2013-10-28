@@ -21,7 +21,7 @@ NOT VALID
 
 int main() {
 
-    char sentence[80] = {'\0'};
+    char sentence[82] = {'\0'};
     int wordlengths[2][11] = {}; // max. 11 diff. word lengths in 79 chars
     int countchars = 0;
     int newlength = 0;
@@ -32,19 +32,21 @@ int main() {
     printf("Enter a sentence: \n");
 
     // fgets reads full sentences from standard input
-    fgets(sentence, 80, stdin);
+    // allowing 82 chars to be able to sort out inputs that are too long
+    fgets(sentence, 82, stdin);
     /*  fgets includes newline character (for Enter) if input is less than
         the allowed number of characters (i.e. only if there's space left in
         the array). -> Check for '\n' and replace it with null terminator if it exists so it doesn't get counted toward character count. */
-    for (i=0;i<80;i++) {
+    for (i=0;i<82;i++) {
         if(sentence[i] == '\n') {
             sentence[i] = '\0';
             break;
         }
     }
     countchars = strlen(sentence);
+    // printf("character count: %d\n", countchars);
 
-    if((countchars > 0) && (countchars <= 79)) {    // expected input
+    if((countchars > 0) && (countchars <= 80)) {    // expected input
         for(i=0;i<countchars;i++) {
             if(sentence[i] == '.' || sentence[i] == ' ') {
                 if (j > 0) {    // length of preceding word
@@ -80,7 +82,6 @@ int main() {
                     break;
                 }
 
-
             } else {
                 // check for letters A-Z (GPR course materials, unit4, p10)
                 for(char ch='A'; ch<='Z'; ch++) {
@@ -108,14 +109,16 @@ int main() {
         if (valid == 1) {
 
             // sort by word length ascending
-            for(k=1;k<11;k++) {
-                if(wordlengths[0][k] < wordlengths[0][k-1]) {
-                    temp0 = wordlengths[0][k-1];
-                    temp1 = wordlengths[1][k-1];
-                    wordlengths[0][k-1] = wordlengths[0][k];
-                    wordlengths[1][k-1] = wordlengths[1][k];
-                    wordlengths[0][k] = temp0;
-                    wordlengths[1][k] = temp1;
+            for(l=1;l<11;l++) {
+                for(k=1;k<11;k++) {
+                    if(wordlengths[0][k] < wordlengths[0][k-1]) {
+                        temp0 = wordlengths[0][k-1];
+                        temp1 = wordlengths[1][k-1];
+                        wordlengths[0][k-1] = wordlengths[0][k];
+                        wordlengths[1][k-1] = wordlengths[1][k];
+                        wordlengths[0][k] = temp0;
+                        wordlengths[1][k] = temp1;
+                    }
                 }
             }
 
