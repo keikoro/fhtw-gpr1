@@ -26,6 +26,8 @@ int main() {
     char sentence[82] = {'\0'};
     int wordlengths[2][11] = {}; // max. 11 diff. word lengths in 79 chars
     int countchars = 0;
+    int thislength = 0;
+    int validletter = 0;
     int i=0;
 
     printf("Enter a sentence: \n");
@@ -43,9 +45,46 @@ int main() {
 
     // input is at least one character and not more than 80
     if(countchars > 0 && countchars <= 80) {
-        // do stuff
+        // go through all characters of sentence
+        for(i=0;i<countchars;i++) {
+            // check if sentence[i] is a lowercase character
+            for(char ch='a';ch<='z';ch++) {
+                if(sentence[i] == ch) {
+                    thislength++;
+                    validletter = 1;
+                }
+            }
+            // sentence[i] isn't lowercase; check if it's an uppercase char
+            if (validletter != 1) {
+                for(char ch='A';ch<='Z';ch++) {
+                    if(sentence[i] == ch) {
+                        thislength++;
+                        validletter = 1;
+                    }
+                }
+            }
+            if(validletter != 1) {  // check for spaces and '.'
+                if(sentence[i] == ' ') {
+                    if (thislength > 0) {
+                        printf("Length %d: valid %d\n", thislength, validletter); // TODO remove later on
+                        thislength = 0;
+                    }
+
+                } else if (sentence[i] == '.') {
+                    if (thislength > 0) {
+                        printf("Length %d: valid %d\n", thislength, validletter); // TODO remove later on
+                        thislength = 0;
+                    }
+                    break;
+                } else {    // sentence[i] is no valid character
+                    printf("NOT VALID\n");
+                    exit(0);
+                }
+            }
+            validletter = 0;
+        }
     } else if (countchars > 80) {   // more than allowed characters entered
-        printf("NOT VALID");
+        printf("NOT VALID\n");
     } else {   // no characters entered - do nothing
     }
     return 0;
