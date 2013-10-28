@@ -26,7 +26,7 @@ int main() {
     int countchars = 0;
     int newlength = 0;
     int valid = 1;
-    int i=0, j=0, k=0, l = 0;
+    int i=0, j=0, k=0, l=0;
     int temp0 = 0, temp1 = 0;
 
     printf("Enter a sentence: \n");
@@ -50,16 +50,12 @@ int main() {
         for(i=0;i<countchars;i++) {
             if(sentence[i] == '.' || sentence[i] == ' ') {
                 if (j > 0) {    // length of preceding word
-                    // printf("wordlength: %d\n", j);
                     // check array for word length j
                     for(k=0;k<11;k++) {
                         if (wordlengths[0][k] == j) {
-                            // printf("count before: %d\n", wordlengths[1][k]);
                             wordlengths[1][k] += 1;
-                            // printf("count after: %d\n", wordlengths[1][k]);
                             newlength = 1;  // word length already in array
                             break;
-                            // printf("count before: %d\n", wordlengths[1][k]);
                         }
                     }
                     // if word length doesn't exist yet, add it
@@ -67,9 +63,7 @@ int main() {
                         for(k=0;k<11;k++) { // find empty column
                             if (wordlengths[0][k] == 0) {
                                 wordlengths[0][k] = j;
-                                // printf("count before: %d\n", wordlengths[1][k]);
                                 wordlengths[1][k] = 1;
-                                // printf("count before: %d\n", wordlengths[1][k]);
                                 break;
                             }
                         }
@@ -87,11 +81,13 @@ int main() {
                 for(char ch='A'; ch<='Z'; ch++) {
                     if (sentence[i] == ch) {
                         j++;
+                        break;
                     }
                 }
                 for(char ch='a'; ch<='z'; ch++) {
                     if (sentence[i] == ch) {
                         j++;
+                        break;
                     }
                 }
                 if (j == 0) {   // sentence[i] is not a valid letter
@@ -101,10 +97,6 @@ int main() {
                 }
             }
         }
-        /*  TODO loop over multi array - sort from word with lowest no.
-            of letters to word with highest no. of letters
-            output nothing if array is empty    */
-
         // only output word lengths in array if ALL input was valid
         if (valid == 1) {
 
