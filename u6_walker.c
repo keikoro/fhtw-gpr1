@@ -73,6 +73,7 @@ int main() {
     int robotX = 0;
     int robotY = 0;
     int wrongmove = 0;
+    int resetarray = 0;
     int i=0, j=0;
 
     // fill array
@@ -81,7 +82,6 @@ int main() {
             field[i][j] = '.';  // just for testing; TODO rm later on
         }
     }
-
     field[0][0] = 'A';
     // print initial playing field
     for (i=0;i<10;i++) {
@@ -90,41 +90,44 @@ int main() {
         }
         printf("\n");
     }
-
     for(char ch='A';ch<='Z';ch++) {
         // direction[0] = '\0';
         if (robotX == 0 && robotY == 0) {
-            ++ch;
+            ch = 'B';
         }
-
+        if (resetarray == 1) {
+            ch = 'A';
+            resetarray = 0;
+        }
 
         printf("Enter direction command: ");
         scanf("%s", direction);
 
+        printf("\n");
         switch(direction[0]) {
-            case('n'):  if (robotX == 0) {
-                            printf("\nYou cannot go there!");
+            case('n'):  if (robotX == 0 || field[robotX-1][robotY] != '.') {
+                            printf("You cannot go there!\n");
                             wrongmove = 1;
                         } else {
                             robotX -= 1;
                         }
                         break;
-            case('e'):  if (robotY == 9) {
-                            printf("\nYou cannot go there!");
+            case('e'):  if (robotY == 9 || field[robotX][robotY+1] != '.') {
+                            printf("You cannot go there!\n");
                             wrongmove = 1;
                         } else {
                             robotY += 1;
                         }
                         break;
-            case('s'):  if (robotX == 9) {
-                            printf("\nYou cannot go there!");
+            case('s'):  if (robotX == 9 || field[robotX+1][robotY] != '.') {
+                            printf("You cannot go there!\n");
                             wrongmove = 1;
                         } else {
                             robotX += 1;
                         }
                         break;
-            case('w'):  if (robotY == 0) {
-                            printf("\nYou cannot go there!");
+            case('w'):  if (robotY == 0 || field[robotX][robotY-1] != '.') {
+                            printf("You cannot go there!\n");
                             wrongmove = 1;
                         } else {
                             robotY -= 1;
@@ -134,10 +137,8 @@ int main() {
                         break;
         }
 
-        printf("\n");
-
-        // print the array
-        if (wrongmove == 0) {
+        // if input was valid, print the array
+        if (wrongmove != 1) {
             for (i=0;i<10;i++) {
                 for(j=0;j<10;j++) {
                     if(i == robotX && j == robotY) {
@@ -147,10 +148,14 @@ int main() {
                 }
                 printf("\n");
             }
-            wrongmove = 0;
+        } else {
+            ch--;
         }
+        wrongmove = 0;
+
         if(ch == 'Z') {
             ch = 'A';
+            resetarray = 1;
         }
     }
 
