@@ -68,47 +68,89 @@ Enter direction command: x
 int main() {
 
     char field[10][10] = {};
-    char direction[1] = {'\0'};
+    char direction[2] = {'\0'};
+    // initial position of robot
+    int robotX = 0;
+    int robotY = 0;
+    int wrongmove = 0;
     int i=0, j=0;
 
     // fill array
     for(i=0;i<10;i++) {
         for(j=0;j<10;j++) {
-            if (j == 5) {
-                field[i][j] = 'X';
-            } else {
-                field[i][j] = '.';  // just for testing; TODO rm later on
-            }
+            field[i][j] = '.';  // just for testing; TODO rm later on
         }
     }
 
+    field[0][0] = 'A';
+    // print initial playing field
+    for (i=0;i<10;i++) {
+        for(j=0;j<10;j++) {
+            printf("%c", field[i][j]);
+        }
+        printf("\n");
+    }
+
     for(char ch='A';ch<='Z';ch++) {
-        direction[0] = '\0';
+        // direction[0] = '\0';
+        if (robotX == 0 && robotY == 0) {
+            ++ch;
+        }
+
+
         printf("Enter direction command: ");
-        scanf("%1s", direction);
-        printf("Direction is: %c\n", direction[0]); // TODO rm later on
+        scanf("%s", direction);
 
         switch(direction[0]) {
-            case('n'):  printf("You chose to go: %c\n", direction[0]);
+            case('n'):  if (robotX == 0) {
+                            printf("\nYou cannot go there!");
+                            wrongmove = 1;
+                        } else {
+                            robotX -= 1;
+                        }
                         break;
-            case('e'):  printf("You chose to go: %c\n", direction[0]);
+            case('e'):  if (robotY == 9) {
+                            printf("\nYou cannot go there!");
+                            wrongmove = 1;
+                        } else {
+                            robotY += 1;
+                        }
                         break;
-            case('s'):  printf("You chose to go: %c\n", direction[0]);
+            case('s'):  if (robotX == 9) {
+                            printf("\nYou cannot go there!");
+                            wrongmove = 1;
+                        } else {
+                            robotX += 1;
+                        }
                         break;
-            case('w'):  printf("You chose to go: %c\n", direction[0]);
+            case('w'):  if (robotY == 0) {
+                            printf("\nYou cannot go there!");
+                            wrongmove = 1;
+                        } else {
+                            robotY -= 1;
+                        }
                         break;
             case('x'):  exit(0);
                         break;
         }
 
         printf("\n");
-        printf("%c\n", ch); // TODO rm later on
+
         // print the array
-        for (i=0;i<10;i++) {
-            for(j=0;j<10;j++) {
-                printf("%c", field[i][j]);
+        if (wrongmove == 0) {
+            for (i=0;i<10;i++) {
+                for(j=0;j<10;j++) {
+                    if(i == robotX && j == robotY) {
+                        field[i][j] = ch;
+                    }
+                    printf("%c", field[i][j]);
+                }
+                printf("\n");
             }
-            printf("\n");
+            wrongmove = 0;
+        }
+        if(ch == 'Z') {
+            ch = 'A';
         }
     }
 
