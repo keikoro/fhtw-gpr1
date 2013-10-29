@@ -29,7 +29,7 @@ int main() {
     int countchars = 0;
     int thislength = 0;
     int validletter = 0;
-    int i=0;
+    int i=0, j=0, k=0;
 
     printf("Enter a userinput: \n");
     /*  fgets reads full userinputs from standard input including spaces, special chars and - if input is less than the allowed no. of character (= if there's space left in the array) - also new line characters (Enter key).  */
@@ -42,7 +42,7 @@ int main() {
         }
     }
     countchars = strlen(userinput); // all printable chars + spaces
-    printf("character count: %d\n", countchars); // TODO remove later on
+    //printf("character count: %d\n", countchars); // TODO remove later on
 
     // input is at least one character and not more than 80
     if(countchars > 0 && countchars <= 80) {
@@ -66,18 +66,29 @@ int main() {
             }
             // userinput[i] is no character at all; check for spaces and '.'
             if(validletter != 1) {
-                if(userinput[i] == ' ') {
+                if(userinput[i] == ' ' || userinput[i] == '.') {
                     if (thislength > 0) {
-                        printf("Length %d: valid %d\n", thislength, validletter); // TODO remove later on
-                        thislength = 0;
+                        // check if word length already in array
+                        for (j=0;j<11;j++) {
+                            if (wordlengths[0][j] == thislength) {  // yes
+                                wordlengths[1][j] += 1;
+                                printf("Length %d: times %d\n", thislength, wordlengths[1][j]); // TODO remove later on
+                                break;
+                            } else {
+                                for (k=0;k<11;k++) {    // no; add to array
+                                    if (wordlengths[0][k] == 0) {
+                                        wordlengths[0][k] = thislength;
+                                        wordlengths[1][k] += 1;
+                                        printf("Length %d: new length %d\n", thislength, wordlengths[1][k]); // TODO remove later
+                                        k=11;
+                                        j=11;
+                                    }
+                                }
+                            }
+                        }
                     }
-
-                } else if (userinput[i] == '.') {
-                    if (thislength > 0) {
-                        printf("Length %d: valid %d\n", thislength, validletter); // TODO remove later on
-                        thislength = 0;
-                    }
-                    break;
+                    printf("Length %d: valid %d\n", thislength, validletter); // TODO remove later on
+                    thislength = 0;
                 } else {    // userinput[i] is no valid character -> exit
                     printf("NOT VALID\n");
                     exit(0);
