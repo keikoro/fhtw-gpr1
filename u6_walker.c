@@ -85,7 +85,21 @@ int main() {
     printf("Enter direction command: ");
     scanf("%c", direction);
     printf("Direction is: %c\n", direction[0]); // TODO rm later on
-    printf("\n");
+
+    switch(direction[0]) {
+        case('n'):  printf("You chose to go: %c\n", direction[0]);
+                    break;
+        case('e'):  printf("You chose to go: %c\n", direction[0]);
+                    break;
+        case('s'):  printf("You chose to go: %c\n", direction[0]);
+                    break;
+        case('w'):  printf("You chose to go: %c\n", direction[0]);
+                    break;
+        case('x'):  exit(0);
+        default:    printf("anderer buchstabe");
+                    break;
+    }
+
     // print the array
     for (i=0;i<10;i++) {
         for(j=0;j<10;j++) {
