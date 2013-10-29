@@ -43,7 +43,6 @@ int main() {
         }
     }
     countchars = strlen(userinput); // all printable chars + spaces
-    //printf("character count: %d\n", countchars); // TODO remove later on
 
     // input is at least one character and not more than 80
     if(countchars > 0 && countchars <= 80) {
