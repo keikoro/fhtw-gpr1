@@ -1,7 +1,7 @@
-/*  Write a program that calculates statistics on word length for a userinput. The userinput is terminated by a ’.’ For each found length of a word the number of words of that length is printed. Only those lengths that are found in the input are printed. Only letters from a-z or A-Z are allowed to form words. Words are separated by a space. No punctuation characters other than ’.’ are allowed. If any other input character is recognized or the input is longer than 80 characters the program displays ”NOT VALID”. Note, that in the case that no word is present in the input, nothing is printed.
+/*  Write a program that calculates statistics on word length for a sentence. The sentence is terminated by a ’.’ For each found length of a word the number of words of that length is printed. Only those lengths that are found in the input are printed. Only letters from a-z or A-Z are allowed to form words. Words are separated by a space. No punctuation characters other than ’.’ are allowed. If any other input character is recognized or the input is longer than 80 characters the program displays ”NOT VALID”. Note, that in the case that no word is present in the input, nothing is printed.
 
 % u6_stats
-Enter a userinput: Bolt was expected to use the super bark.
+Enter a sentence: Bolt was expected to use the super bark.
 Length 2: 1
 Length 3: 3
 Length 4: 2
@@ -9,7 +9,7 @@ Length 5: 1
 Length 8: 1
 
 % u6_stats
-Enter a userinput: Something wasn’t right.
+Enter a sentence: Something wasn’t right.
 
 NOT VALID
 */
@@ -32,7 +32,7 @@ int main() {
     int placeholder_1;
     int i=0, j=0, k=0;
 
-    printf("Enter a userinput: \n");
+    printf("Enter a sentence: \n");
     /*  fgets reads full userinputs from standard input including spaces, special chars and - if input is less than the allowed no. of character (= if there's space left in the array) - also new line characters (Enter key).  */
     fgets(userinput, maxchars, stdin);
     /*  As newline characters are also counted with strlen(), a potential '\n' character needs to be replaced with the null terminator.  */
