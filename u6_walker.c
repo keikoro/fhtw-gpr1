@@ -68,7 +68,7 @@ Enter direction command: x
 int main() {
 
     char field[10][10] = {};
-    char direction[2] = {'\0'};
+    char direction;
     // initial position of robot
     int robotX = 0;
     int robotY = 0;
@@ -103,10 +103,10 @@ int main() {
         }
 
         printf("Enter direction command: ");
-        scanf("%s", direction);
+        scanf(" %c", &direction);
         printf("\n");
 
-        switch(direction[0]) {
+        switch(direction) {
             case('n'):  if (robotX == 0 || field[robotX-1][robotY] != '.') {
                             printf("You cannot go there!\n");
                             wrongmove = 1;
