@@ -2,6 +2,7 @@
 Write a program that computes a ”walk” (of a cute robot) across a 10x10 array. The array contains characters (all initially ’.’). The user can enter four different directions north, east, south, west, by entering the characters n,e,s,w to control the walk. If the user enters x the program exits. After each direction-command the array is printed with the walk being display by capital letter starting with A to Z. We use A for the starting point, with 25 remaining letters to denote the steps. After having used letter Z to denote a step, we wrap around and start again with A. To make the walk more interesting, the user is not allowed to revisit a location. In this case the program does not print the array, but prints ”You cannot go there!” - Yes, you can trap yourself.
 
 Starting in the upper left corner (position 0,0):
+
 % u6_walker
 A.........
 ..........
@@ -67,19 +68,24 @@ Enter direction command: x
 int main() {
 
     char field[10][10] = {};
+    char direction[1] = "x";
     int i=0, j=0;
 
     // fill array
     for(i=0;i<10;i++) {
         for(j=0;j<10;j++) {
-            if (j != 5) {
-                field[i][j] = '.';
+            if (j == 5) {
+                field[i][j] = 'X';
             } else {
-                field[i][j] = 'X';  // just for testing; TODO rm later on
+                field[i][j] = '.';  // just for testing; TODO rm later on
             }
         }
     }
 
+    printf("Enter direction command: ");
+    scanf("%c", direction);
+    printf("Direction is: %c\n", direction[0]); // TODO rm later on
+    printf("\n");
     // print the array
     for (i=0;i<10;i++) {
         for(j=0;j<10;j++) {
