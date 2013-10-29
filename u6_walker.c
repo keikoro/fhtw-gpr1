@@ -68,7 +68,7 @@ Enter direction command: x
 int main() {
 
     char field[10][10] = {};
-    char direction[1] = "x";
+    char direction[1] = {'\0'};
     int i=0, j=0;
 
     // fill array
@@ -82,30 +82,34 @@ int main() {
         }
     }
 
-    printf("Enter direction command: ");
-    scanf("%c", direction);
-    printf("Direction is: %c\n", direction[0]); // TODO rm later on
+    for(char ch='A';ch<='Z';ch++) {
+        direction[0] = '\0';
+        printf("Enter direction command: ");
+        scanf("%1s", direction);
+        printf("Direction is: %c\n", direction[0]); // TODO rm later on
 
-    switch(direction[0]) {
-        case('n'):  printf("You chose to go: %c\n", direction[0]);
-                    break;
-        case('e'):  printf("You chose to go: %c\n", direction[0]);
-                    break;
-        case('s'):  printf("You chose to go: %c\n", direction[0]);
-                    break;
-        case('w'):  printf("You chose to go: %c\n", direction[0]);
-                    break;
-        case('x'):  exit(0);
-        default:    printf("anderer buchstabe");
-                    break;
-    }
-
-    // print the array
-    for (i=0;i<10;i++) {
-        for(j=0;j<10;j++) {
-            printf("%c", field[i][j]);
+        switch(direction[0]) {
+            case('n'):  printf("You chose to go: %c\n", direction[0]);
+                        break;
+            case('e'):  printf("You chose to go: %c\n", direction[0]);
+                        break;
+            case('s'):  printf("You chose to go: %c\n", direction[0]);
+                        break;
+            case('w'):  printf("You chose to go: %c\n", direction[0]);
+                        break;
+            case('x'):  exit(0);
+                        break;
         }
+
         printf("\n");
+        printf("%c\n", ch); // TODO rm later on
+        // print the array
+        for (i=0;i<10;i++) {
+            for(j=0;j<10;j++) {
+                printf("%c", field[i][j]);
+            }
+            printf("\n");
+        }
     }
 
     return 0;
