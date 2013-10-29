@@ -79,10 +79,11 @@ int main() {
     // fill array
     for(i=0;i<10;i++) {
         for(j=0;j<10;j++) {
-            field[i][j] = '.';  // just for testing; TODO rm later on
+            field[i][j] = '.';
         }
     }
     field[0][0] = 'A';
+
     // print initial playing field
     for (i=0;i<10;i++) {
         for(j=0;j<10;j++) {
@@ -90,8 +91,9 @@ int main() {
         }
         printf("\n");
     }
+
+    // start moving the robot on the playing field
     for(char ch='A';ch<='Z';ch++) {
-        // direction[0] = '\0';
         if (robotX == 0 && robotY == 0) {
             ch = 'B';
         }
@@ -102,8 +104,8 @@ int main() {
 
         printf("Enter direction command: ");
         scanf("%s", direction);
-
         printf("\n");
+
         switch(direction[0]) {
             case('n'):  if (robotX == 0 || field[robotX-1][robotY] != '.') {
                             printf("You cannot go there!\n");
@@ -148,7 +150,7 @@ int main() {
                 }
                 printf("\n");
             }
-        } else {
+        } else {    // reset current letter on invalid input
             ch--;
         }
         wrongmove = 0;
