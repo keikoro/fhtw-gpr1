@@ -66,5 +66,27 @@ Enter direction command: x
 
 int main() {
 
+    char field[10][10] = {};
+    int i=0, j=0;
+
+    // fill array
+    for(i=0;i<10;i++) {
+        for(j=0;j<10;j++) {
+            if (j != 5) {
+                field[i][j] = '.';
+            } else {
+                field[i][j] = 'X';  // just for testing; TODO rm later on
+            }
+        }
+    }
+
+    // print the array
+    for (i=0;i<10;i++) {
+        for(j=0;j<10;j++) {
+            printf("%c", field[i][j]);
+        }
+        printf("\n");
+    }
+
     return 0;
 }
