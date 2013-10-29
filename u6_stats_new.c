@@ -18,7 +18,6 @@ NOT VALID
 #include <stdlib.h>
 #include <string.h>
 
-
 int main() {
 
     /*  Allow up to 82 chars so "NOT VALID" can be triggered on inputs with more than 81 chars (= 80 allowed characters + 1 null terminator).    */
@@ -29,6 +28,8 @@ int main() {
     int countchars = 0;
     int thislength = 0;
     int validletter = 0;
+    int placeholder_0;
+    int placeholder_1;
     int i=0, j=0, k=0;
 
     printf("Enter a userinput: \n");
@@ -72,29 +73,45 @@ int main() {
                         for (j=0;j<11;j++) {
                             if (wordlengths[0][j] == thislength) {  // yes
                                 wordlengths[1][j] += 1;
-                                printf("Length %d: times %d\n", thislength, wordlengths[1][j]); // TODO remove later on
+                                thislength = 0;
                                 break;
-                            } else {
-                                for (k=0;k<11;k++) {    // no; add to array
-                                    if (wordlengths[0][k] == 0) {
-                                        wordlengths[0][k] = thislength;
-                                        wordlengths[1][k] += 1;
-                                        printf("Length %d: new length %d\n", thislength, wordlengths[1][k]); // TODO remove later
-                                        k=11;
-                                        j=11;
-                                    }
+                            }
+                        }
+                        if (thislength != 0) {
+                            for (j=0;j<11;j++) {    // no; add to array
+                                if (wordlengths[0][j] == 0) {
+                                    wordlengths[0][j] = thislength;
+                                    wordlengths[1][j] += 1;
+                                    thislength = 0;
+                                    break;
                                 }
                             }
                         }
                     }
-                    printf("Length %d: valid %d\n", thislength, validletter); // TODO remove later on
-                    thislength = 0;
                 } else {    // userinput[i] is no valid character -> exit
                     printf("NOT VALID\n");
                     exit(0);
                 }
             }
             validletter = 0;
+        }
+        // sort array by word length ascending (bubble sort)
+        for(j=1;j<11;j++) {
+            for(k=1;k<11;k++) {
+                if(wordlengths[0][k] < wordlengths[0][k-1]) {
+                    placeholder_0 = wordlengths[0][k-1];
+                    placeholder_1 = wordlengths[1][k-1];
+                    wordlengths[0][k-1] = wordlengths[0][k];
+                    wordlengths[1][k-1] = wordlengths[1][k];
+                    wordlengths[0][k] = placeholder_0;
+                    wordlengths[1][k] = placeholder_1;
+                }
+            }
+        }
+        for(k=0;k<11;k++) {
+            if (wordlengths[0][k] != 0) {   // ignore empty columns
+                printf("Length %d: %d\n", wordlengths[0][k], wordlengths[1][k]);
+            }
         }
     } else if (countchars > 80) {   // more than allowed characters entered
         printf("NOT VALID\n");
