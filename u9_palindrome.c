@@ -17,20 +17,17 @@ The maximum length of the message is 40 characters. Reading of the message shoul
 #include <stdlib.h>
 #include <string.h>
 
-// defines allowed length of message
+// defines allowed length of message -> allowed chars + 1x newline
 #define maxchars 41
 
 int main() {
 
     char message[maxchars] = {'\0'};
     int countmsg = 0;
-    int bla[] = {1,2,3};
-    int (*b)[];
-    b = &bla;
-    char (*p)[maxchars];
-    p = &message;
+    // int bla[] = {1,2,3};
+    // int (*b)[] = &bla;
+    char (*p)[maxchars] = &message;
     int i = 0;
-
 
     printf("palindrome\n");
     printf("Enter a message: ");
@@ -45,23 +42,30 @@ int main() {
     }
     countmsg = strlen(message);
 
-    // p = &message;
+    /*  STEPS
+        separate the input into alphabetical and non-alphabetical characters, put them into two separate arrays (use ASCII instead of checking against all letters!*)
+
+        if both arrays are empty -> palindrome
+        if the array with alphabetic chars is empty -> palindrome
+
+        if the array with alphabetic chars is not empty:
+        adjust countmsg (count length of array)
+
+        if there's only one letter -> palindrome
+
+        if there's more than one letter:
+        - divide countmsg by two, save result in variable looptimes
+        - check the first letter against last, 2nd against one but last etc., so (*p)[0] vs. (*p)[countmsg-1], (*p)[1] vs. (*p)[countmsg-2] => (*p)[i] vs. (*p)[countmsg-i-1] looptimes times
+
+        *ASCII table
+        A-Z ... 65-90
+        a-z ... 97-122
+    */
 
     printf("message length: %d\n", countmsg);
     printf("message: %s\n", message);
-    printf("first letter: %d\n", (*b)[0]);
     printf("first letter: %c\n", (*p)[0]);
-
     printf("last letter: %c\n", (*p)[countmsg-1]);
-    printf("prev to last letter: %c\n", (*p)[countmsg-2]);
-
-
-    // printf("last letter: %s\n", (*p)[countmsg-1]);
-
-
-    // if () {
-
-    // }
 
     return 0;
 }
