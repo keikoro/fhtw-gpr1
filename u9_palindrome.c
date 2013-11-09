@@ -23,7 +23,7 @@ The maximum length of the message is 40 characters. Reading of the message shoul
 int main() {
 
     char message[maxchars] = {'\0'};
-    int countmsg = 0;
+    int countinput = 0;
     char letters[maxchars] = {'\0'};
     int countletters = 0;
     char specialchars[maxchars] = {'\0'};
@@ -42,7 +42,7 @@ int main() {
             break;
         }
     }
-    countmsg = strlen(message);
+    countinput = strlen(message);
 
     /*  STEPS
         separate the input into alphabetical and non-alphabetical characters, put them into two separate arrays. Use ASCII instead of checking against all letters!
@@ -51,7 +51,7 @@ int main() {
         A-Z ... 65-90
         a-z ... 97-122
     */
-    for(i=0;i<countmsg;i++) {
+    for(i=0;i<countinput;i++) {
 
         if( (message[i] >= 65 && message[i] <= 90) || (message[i] >= 97 && message[i] <= 122) ) {
             letters[j] = message[i];
@@ -65,27 +65,19 @@ int main() {
     if(countletters > 1) {
 
     } else {
-        // if letters array is empty or contains only one letter
+        // if letters array is empty or contains only 1 letter
         printf("Not a palindrome\n");
     }
 
     /*
         if the array with alphabetic chars is not empty:
-        adjust countmsg (count length of array)
+        adjust countinput (count length of array)
 
         if there's only one letter -> palindrome
 
         if there's more than one letter:
-        - divide countmsg by two, save result in variable looptimes
-        - check the first letter against last, 2nd against one but last etc., so (*p)[0] vs. (*p)[countmsg-1], (*p)[1] vs. (*p)[countmsg-2] => (*p)[i] vs. (*p)[countmsg-i-1] looptimes times
-
-
+        - divide countinput by two, save result in variable looptimes
+        - check the first letter against last, 2nd against one but last etc., so (*p)[0] vs. (*p)[countinput-1], (*p)[1] vs. (*p)[countinput-2] => (*p)[i] vs. (*p)[countinput-i-1] looptimes times
     */
-
-    printf("message length: %d\n", countmsg);
-    printf("message: %s\n", message);
-    printf("first letter: %c\n", (*p)[0]);
-    printf("last letter: %c\n", (*p)[countmsg-1]);
-
     return 0;
 }
