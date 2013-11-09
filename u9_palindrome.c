@@ -51,7 +51,6 @@ int main() {
         A-Z ... 65-90
         a-z ... 97-122
     */
-
     for(i=0;i<countmsg;i++) {
 
         if( (message[i] >= 65 && message[i] <= 90) || (message[i] >= 97 && message[i] <= 122) ) {
@@ -63,16 +62,10 @@ int main() {
     countletters = strlen(letters);
     printf("number of letters: %d\n", countletters);
 
-
-    /*
-        if both arrays are empty -> palindrome
-        if the array with alphabetic chars is empty -> palindrome
-
-    */
-
     if(countletters > 1) {
 
     } else {
+        // if letters array is empty or contains only one letter
         printf("Not a palindrome\n");
     }
 
