@@ -16,6 +16,7 @@ The maximum length of the message is 40 characters. Reading of the message shoul
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 // defines allowed length of message -> allowed chars + 1x newline
 #define maxchars 41
@@ -24,11 +25,13 @@ int main() {
 
     char message[maxchars] = {'\0'};
     char letters[maxchars] = {'\0'};
+    char specialchars[maxchars] = {'\0'};
     int countinput = 0;
     int countletters = 0;
+    int countspecial = 0;
     int palindromeloop = 0;
     char (*p)[maxchars] = &letters;
-    int i=0, j=0, k=0;
+    int i=0, j=0, k=0, l=0;
 
     printf("Enter a message: ");
     fgets(message, maxchars, stdin);
@@ -52,20 +55,26 @@ int main() {
     for(i=0;i<countinput;i++) {
 
         if( (message[i] >= 65 && message[i] <= 90) || (message[i] >= 97 && message[i] <= 122) ) {
-            letters[j] = message[i];
+            // make all letters lowercase so mixed case also matches
+            letters[j] = tolower(message[i]);
             j++;
+        } else {
+            specialchars[l] = message[i];
+            l++;
         }
 
     }
     countletters = strlen(letters);
+    countspecial = strlen(specialchars);
 
     if(countletters > 0) {
         palindromeloop = countinput / 2;
 
         for(i=0;i<palindromeloop;i++) {
-            if ( (*p)[i] != (*p)[countinput-i-1]) {
+            if ( (*p)[i] != (*p)[countletters-i-1]) {
                 printf("Not a palindrome\n");
-                k=1;
+                k = 1;
+                i = palindromeloop;
                 break;
             }
         }
@@ -73,8 +82,11 @@ int main() {
             printf("Palindrome\n");
         }
 
+    } else if (countspecial > 0) {
+        // if there are ONLY special characters
+        printf("Palindrome\n");
     } else {
-        // if letters array is empty
+        // if there are no letters or special characters
         printf("Not a palindrome\n");
     }
 
