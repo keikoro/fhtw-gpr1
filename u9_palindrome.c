@@ -42,6 +42,26 @@ int main() {
     }
     countmsg = strlen(message);
 
+    /*  STEPS
+        separate the input into alphabetical and non-alphabetical characters, put them into two separate arrays (use ASCII instead of checking against all letters!*)
+
+        if both arrays are empty -> palindrome
+        if the array with alphabetic chars is empty -> palindrome
+
+        if the array with alphabetic chars is not empty:
+        adjust countmsg (count length of array)
+
+        if there's only one letter -> palindrome
+
+        if there's more than one letter:
+        - divide countmsg by two, save result in variable looptimes
+        - check the first letter against last, 2nd against one but last etc., so (*p)[0] vs. (*p)[countmsg-1], (*p)[1] vs. (*p)[countmsg-2] => (*p)[i] vs. (*p)[countmsg-i-1] looptimes times
+
+        *ASCII table
+        A-Z ... 65-90
+        a-z ... 97-122
+    */
+
     printf("message length: %d\n", countmsg);
     printf("message: %s\n", message);
     printf("first letter: %c\n", (*p)[0]);
