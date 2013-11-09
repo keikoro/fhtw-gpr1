@@ -45,60 +45,51 @@ int main() {
     }
     countinput = strlen(message);
 
-    /*  STEPS
-        separate the input into alphabetical and non-alphabetical characters, put them into two separate arrays. Use ASCII instead of checking against all letters!
-
-        ASCII table
-        A-Z ... 65-90
-        a-z ... 97-122
+    /*  separate input into alphabetical and non-alphabetical characters and put them into two separate arrays. Use ASCII instead of checking against all letters.
+    ASCII table:
+    A-Z ... 65-90
+    a-z ... 97-122
     */
     for(i=0;i<countinput;i++) {
-
+        // check for alphabetical characters
         if( (message[i] >= 65 && message[i] <= 90) || (message[i] >= 97 && message[i] <= 122) ) {
-            // make all letters lowercase so mixed case also matches
+            // make all letters lowercase, so mixed case letters also match
             letters[j] = tolower(message[i]);
             j++;
+        // make separate array for special characters
         } else {
             specialchars[l] = message[i];
             l++;
         }
-
     }
     countletters = strlen(letters);
     countspecial = strlen(specialchars);
 
-    if(countletters > 0) {
-        palindromeloop = countinput / 2;
+    /*  if the letter array is not empty, loop over it to check if the 1st letter equals the last, the 2nd equals the one but last etc.
 
+    do this until the middle of the array is reached (array length/2). if there's a non-match in there, print "Not a palindrome" and exit the program.
+    */
+    if(countletters > 0) {
+        // loop times = half the length of the array
+        palindromeloop = countinput / 2;
         for(i=0;i<palindromeloop;i++) {
+            // exit program if letters don't match
             if ( (*p)[i] != (*p)[countletters-i-1]) {
                 printf("Not a palindrome\n");
                 k = 1;
                 i = palindromeloop;
-                break;
+                exit(0);
             }
         }
-        if (k==0) {
-            printf("Palindrome\n");
-        }
+        printf("Palindrome\n"); // else print confirmation
 
+    // input is a palindrome if there are only special characters
     } else if (countspecial > 0) {
-        // if there are ONLY special characters
         printf("Palindrome\n");
+
+    // input is not a palindrome if there are no printable characters
     } else {
-        // if there are no letters or special characters
         printf("Not a palindrome\n");
     }
-
-    /*
-        if the array with alphabetic chars is not empty:
-        adjust countinput (count length of array)
-
-        if there's only one letter -> palindrome
-
-        if there's more than one letter:
-        - divide countinput by two, save result in variable looptimes
-        - check the first letter against last, 2nd against one but last etc., so (*p)[0] vs. (*p)[countinput-1], (*p)[1] vs. (*p)[countinput-2] => (*p)[i] vs. (*p)[countinput-i-1] looptimes times
-    */
     return 0;
 }
