@@ -23,13 +23,11 @@ The maximum length of the message is 40 characters. Reading of the message shoul
 int main() {
 
     char message[maxchars] = {'\0'};
-    int countinput = 0;
     char letters[maxchars] = {'\0'};
+    int countinput = 0;
     int countletters = 0;
-    char specialchars[maxchars] = {'\0'};
-    // int bla[] = {1,2,3};
-    // int (*b)[] = &bla;
-    char (*p)[maxchars] = &message;
+    int palindromeloop = 0;
+    char (*p)[maxchars] = &letters;
     int i=0, j=0, k=0;
 
     printf("Enter a message: ");
@@ -60,12 +58,23 @@ int main() {
 
     }
     countletters = strlen(letters);
-    printf("number of letters: %d\n", countletters);
 
-    if(countletters > 1) {
+    if(countletters > 0) {
+        palindromeloop = countinput / 2;
+
+        for(i=0;i<palindromeloop;i++) {
+            if ( (*p)[i] != (*p)[countinput-i-1]) {
+                printf("Not a palindrome\n");
+                k=1;
+                break;
+            }
+        }
+        if (k==0) {
+            printf("Palindrome\n");
+        }
 
     } else {
-        // if letters array is empty or contains only 1 letter
+        // if letters array is empty
         printf("Not a palindrome\n");
     }
 
