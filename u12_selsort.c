@@ -28,9 +28,11 @@ int main() {
     int allnumbers[maxinput];
     int arraylength;
     int smallest = 0;
+    int temp = 0;
     int comparisons = 0;
     int swaps = 0;
-    int i = 0, j = 0;
+    int loopstart = 0;
+    int i=0, j=0;
 
     printf("Enter numbers: ");
 
@@ -44,30 +46,38 @@ int main() {
 
     for(i=0;i<arraylength-1;i++) {
 
-        if (i == 0) {
-            smallest = allnumbers[i];
+        // assume the first array element is the smallest
+        smallest = allnumbers[loopstart];
+
+        for(j=loopstart+1;j<arraylength-loopstart-1;j++) {
+            // if a subsequent array element is smaller
+            if (smallest > allnumbers[j]) {
+                smallest = allnumbers[j];
+            }
         }
 
         printf("Step %d: ", i+1);
-        for(j=0;j<arraylength;j++) {
+        for(j=0;j<arraylength-1;j++) {
 
-            if (allnumbers[i] < allnumbers[i+1]) {
-                smallest = allnumbers[i];
-            } else {
-                smallest = allnumbers[i+1];
+            if (allnumbers[j] == smallest) {
+                printf("[");
+            }
+            if(j==i) {
+                printf("(");
+            }
+            printf("%d", allnumbers[j]);
+            if(j==i) {
+                printf(")");
+            }
+            if (allnumbers[j] == smallest) {
+                printf("]");
             }
 
-            printf("%d ", allnumbers[j]);
+            printf(" ");
         }
-            printf("\n");
-
-
+        printf("\n");
 
     }
-
-    printf("The smallest number is: %d\n", smallest);
-
-
 
     /*  - create an array out of user input = many no.s separated by spaces
         - loop through the array searching for the smallest element
