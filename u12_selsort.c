@@ -21,8 +21,75 @@ Number of swaps: 6
 #include <stdlib.h>
 #include <string.h>
 
+#define maxinput 2000
 
 int main() {
+
+    int allnumbers[maxinput];
+    int arraylength;
+    int smallest = 0;
+    int comparisons = 0;
+    int swaps = 0;
+    int i = 0, j = 0;
+
+    printf("Enter numbers: ");
+
+    // have user input numbers; stop taking input when 0 is entered
+    while(scanf("%d", &allnumbers[i]) && allnumbers[i] != 0) {
+        printf("Your input: %d\n", allnumbers[i]);
+        i++;
+    }
+
+    arraylength = i;
+
+    for(i=0;i<arraylength-1;i++) {
+
+        if (i == 0) {
+            smallest = allnumbers[i];
+        }
+
+        printf("Step %d: ", i+1);
+        for(j=0;j<arraylength;j++) {
+
+            if (allnumbers[i] < allnumbers[i+1]) {
+                smallest = allnumbers[i];
+            } else {
+                smallest = allnumbers[i+1];
+            }
+
+            printf("%d ", allnumbers[j]);
+        }
+            printf("\n");
+
+
+
+    }
+
+    printf("The smallest number is: %d\n", smallest);
+
+
+
+    /*  - create an array out of user input = many no.s separated by spaces
+        - loop through the array searching for the smallest element
+        - once the smallest element is found, print the array... with [] around the smallest number and () around the number it gets swapped with (first no.)
+        - in the end, print the no. of comparisons
+        - in the end, print the number of swaps
+    */
+
+    // printf("%d", inputarray[0]);
+
+    // printf("[%d]", currennumber);
+    // printf("(%d)", currennumber);
+    // swaps++;
+    // comparisons++;
+
+
+    // for (i=0;i<countinput;i++) {
+    //     if
+    // }
+
+    printf("Number of comparisons: %d\n", comparisons);
+    printf("Number of swaps: %d\n", swaps);
 
     return 0;
 }
