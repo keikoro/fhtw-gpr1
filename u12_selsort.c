@@ -26,8 +26,8 @@ Number of swaps: 6
 int main() {
 
     int allnumbers[maxinput];
-    int arraylength;
-    int smallest = 0;
+    int arraylength = 0;
+    int smallestindex = 0;
     int temp = 0;
     int comparisons = 0;
     int swaps = 0;
@@ -42,38 +42,50 @@ int main() {
     }
     arraylength = i;
 
-    for(i=0;i<arraylength;i++) {
+    for(i=0;i<arraylength+1;i++) {
         // assume the first array element is the smallest
-        smallest = allnumbers[loopstart];
 
         for(j=loopstart+1;j<arraylength-loopstart;j++) {
             // compare smallest element to subsequent elements in array
-            if (smallest > allnumbers[j]) {
-                smallest = allnumbers[j];
+            if (allnumbers[smallestindex] > allnumbers[j]) {
+                smallestindex = j;
             }
         }
 
-        printf("Step %d: ", i+1);
+        if (i < arraylength-1) {
+            printf("Step %d: ", i+1);
+        } else if (i < arraylength) {
+            printf("Result: ");
+        }
+
         for(j=0;j<arraylength;j++) {
 
-            if (allnumbers[j] == smallest) {
-                printf("[");
-            }
-            if(j==i) {
-                printf("(");
-            }
-            printf("%d", allnumbers[j]);
-            if(j==i) {
-                printf(")");
-            }
-            if (allnumbers[j] == smallest) {
-                printf("]");
+            if (i < arraylength-1) {
+                if (allnumbers[j] == allnumbers[smallestindex]) {
+                    printf("[");
+                }
+                if(j==i) {
+                    printf("(");
+                }
+                printf("%d", allnumbers[j]);
+                if(j==i) {
+                    printf(")");
+                }
+                if (allnumbers[j] == allnumbers[smallestindex]) {
+                    printf("]");
+                }
+            } else if (i < arraylength) {
+                // print "Result" line
+                printf("%d", allnumbers[j]);
             }
 
-            printf(" ");
+            if (i < arraylength) {
+                printf(" ");
+            }
         }
-        printf("\n");
-
+        if (i < arraylength) {
+            printf("\n");
+        }
     }
 
     /*  - create an array out of user input = many no.s separated by spaces
@@ -83,20 +95,9 @@ int main() {
         - in the end, print the number of swaps
     */
 
-    // printf("%d", inputarray[0]);
-
-    // printf("[%d]", currennumber);
-    // printf("(%d)", currennumber);
-    // swaps++;
-    // comparisons++;
-
-
-    // for (i=0;i<countinput;i++) {
-    //     if
-    // }
 
     printf("Number of comparisons: %d\n", comparisons);
-    printf("Number of swaps: %d\n", swaps);
+    printf("Number of swaps: %d\n", i);
 
     return 0;
 }
