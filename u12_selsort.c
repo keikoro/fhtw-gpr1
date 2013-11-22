@@ -38,26 +38,23 @@ int main() {
 
     // have user input numbers; stop taking input when 0 is entered
     while(scanf("%d", &allnumbers[i]) && allnumbers[i] != 0) {
-        printf("Your input: %d\n", allnumbers[i]);
         i++;
     }
-
     arraylength = i;
 
-    for(i=0;i<arraylength-1;i++) {
-
+    for(i=0;i<arraylength;i++) {
         // assume the first array element is the smallest
         smallest = allnumbers[loopstart];
 
-        for(j=loopstart+1;j<arraylength-loopstart-1;j++) {
-            // if a subsequent array element is smaller
+        for(j=loopstart+1;j<arraylength-loopstart;j++) {
+            // compare smallest element to subsequent elements in array
             if (smallest > allnumbers[j]) {
                 smallest = allnumbers[j];
             }
         }
 
         printf("Step %d: ", i+1);
-        for(j=0;j<arraylength-1;j++) {
+        for(j=0;j<arraylength;j++) {
 
             if (allnumbers[j] == smallest) {
                 printf("[");
