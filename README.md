@@ -1,7 +1,11 @@
-# C homework for my UAS
+# FHTW GPR1
 
-Various small (beginner) C scripts.  
-See comments for detailed descriptions.
+Various small (beginner) C scripts.   
+C homework for my CS studies, winter term 2013/14.
+
+
+See code comments for descriptions of individual programs.
+
 
 ## Usage 
 
